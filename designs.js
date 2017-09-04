@@ -3,8 +3,11 @@ const colorPicker = document.getElementById("colorPicker");
 const input_height = document.getElementById("input_height");
 const input_width = document.getElementById("input_width");
 const myTable = document.getElementById('pixel_canvas');
+document.getElementById('sizePicker').addEventListener('submit', makeGrid);
+
 //add event listener to take user selected color value as input
 colorPicker.addEventListener("input", updateFirst);
+
 //define default color
 let userColor = "#000000";
 const toggleCol = function() {
@@ -16,9 +19,10 @@ const toggleCol = function() {
 };
 
 //make grid on screen
-function makeGrid() {
+function makeGrid(event) {
     //delete any preciously created table
     myTable.innerHTML = "";
+    event.preventDefault();
     let elem, subelem;
     //create td elements in table
     for (let i = 0, k = input_height.value; i < k; i++) {
